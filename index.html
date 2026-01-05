@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>壁紙(クロス)必要メートル数 計算ツール | リピート柄合わせ自動計算</title>
+    <meta name="description"
+        content="部屋の壁の高さ・幅と、壁紙のリピート幅（タテ）を入力するだけで、必要な壁紙のメートル数を自動計算。柄合わせ（リピート）によるロス分も考慮した正確な数値が出せます。DIY・セルフリフォーム用。">
+    <meta name="keywords" content="壁紙,計算,m数,クロス,リピート,柄合わせ,必要量,シミュレーション">
+    <meta name="google-site-verification" content="ここにサチコのタグを入れる" />
+
+    <meta property="og:title" content="壁紙必要ｍ数・リピート計算ツール">
+    <meta property="og:description" content="柄物の壁紙も失敗しない！リピートを考慮した必要メートル数を一発計算。">
+    <meta property="og:type" content="website">
+
+    <!-- AEO: WebApplication Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "壁紙必要メートル数計算ツール",
+        "description": "壁紙の柄リピートを考慮した必要購入数を計算するツール。壁の高さ・幅とリピート幅を入力するだけで、必要なメートル数を自動計算。",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY"
+        },
+        "featureList": [
+            "壁紙必要メートル数の自動計算",
+            "柄リピートを考慮した正確な計算",
+            "切りしろ10cm自動加算",
+            "スマートフォン対応"
+        ]
+    }
+    </script>
+
+    <!-- AEO: FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "壁紙の必要メートル数はどうやって計算する？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "壁紙の必要メートル数は「壁の横幅÷壁紙の有効幅（通常92cm）」で必要な枚数を求め、「壁の高さ＋切りしろ10cm」を掛けて計算します。柄物の場合は、リピート幅の倍数になるよう切り上げる必要があります。例：高さ240cm、幅360cmの壁なら、4枚×250cm＝10mが目安です。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "壁紙のリピートとは何ですか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "リピートとは、壁紙の柄が繰り返されるパターンの長さです。柄物の壁紙を貼る際は、隣り合う壁紙の柄を合わせる必要があるため、リピート幅の倍数でカットします。例えばリピート32cmの壁紙で高さ250cm必要な場合、32×8＝256cmでカットします。無地の壁紙にはリピートはありません。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "壁紙の有効幅92cmとは？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "日本の一般的な壁紙（クロス）の規格幅は約92cmです。これは貼り付け後の有効幅で、実際の製品幅は少し広くなっています。輸入壁紙は52cm幅のものが多いので、購入前に確認が必要です。"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- AEO: HowTo Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "壁紙の必要メートル数を計算する方法",
+        "description": "壁の寸法と壁紙のリピート幅から、必要な壁紙のメートル数を計算する手順",
+        "totalTime": "PT1M",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "壁の高さを入力",
+                "text": "壁紙を貼る壁の高さ（cm）を入力します。一般的な住宅の天井高は240cm程度です。"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "壁の横幅を入力",
+                "text": "壁紙を貼る壁の横幅（cm）を入力します。複数の壁に貼る場合は合計幅を入力します。"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "リピート幅を入力",
+                "text": "柄物の壁紙の場合、商品に記載されている「タテリピート」の数値を入力します。無地の場合は0のままで構いません。"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "計算結果を確認",
+                "text": "自動的に計算され、必要な壁紙のメートル数が表示されます。切りしろ10cmが自動的に加算されています。"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff8e1;
+            color: #4e342e;
+            line-height: 1.6;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #5d4037;
+            border-bottom: 2px solid #d7ccc8;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #795548;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 2px solid #efebe9;
+            border-radius: 6px;
+            font-size: 18px;
+            transition: border-color 0.3s;
+            background-color: #fafafa;
+        }
+
+        input:focus {
+            border-color: #8d6e63;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #efebe9;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #3e2723;
+            line-height: 1.2;
+        }
+
+        .details {
+            font-size: 14px;
+            text-align: left;
+            margin-top: 10px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .btn-clear {
+            width: 100%;
+            padding: 16px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(108, 117, 125, 0.2);
+            margin-top: 10px;
+        }
+
+        .btn-clear:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-clear:active {
+            transform: translateY(2px);
+        }
+
+        /* アフィリエイトボタン */
+        .shop-link {
+            display: inline-block;
+            width: 45%;
+            margin: 5px 2%;
+            padding: 12px 0;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .rakuten {
+            background-color: #bf0000;
+        }
+
+        .amazon {
+            background-color: #ff9900;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>壁紙(クロス)必要ｍ数 計算機</h1>
+
+        <div class="form-group">
+            <label>壁の高さ (cm)</label>
+            <input type="number" id="wallHeight" placeholder="例: 240" inputmode="decimal" min="0" oninput="calculate()">
+        </div>
+
+        <div class="form-group">
+            <label>壁の横幅 (cm)</label>
+            <input type="number" id="wallWidth" placeholder="例: 360" inputmode="decimal" min="0" oninput="calculate()">
+        </div>
+
+        <div class="form-group" style="background:#f0f4c3; padding:10px; border-radius:8px;">
+            <label>壁紙の柄リピート (cm)</label>
+            <div style="font-size:12px; color:#555; margin-bottom:5px;">※無地なら「0」のまま。柄物の場合は「タテリピート」の数値を入力。</div>
+            <input type="number" id="patternRepeat" placeholder="0" value="0" inputmode="decimal" min="0"
+                oninput="calculate()">
+        </div>
+
+        <div class="form-group">
+            <label>壁紙の有効幅 (cm) <span style="font-size:11px; font-weight:normal;">※通常は92cm</span></label>
+            <input type="number" id="paperWidth" value="92" inputmode="decimal" min="0" oninput="calculate()">
+        </div>
+
+        <button class="btn-clear" onclick="clearAll()">クリア</button>
+
+        <div class="result-box" id="resultArea">
+            購入目安は...<br>
+            <span class="result-number" id="resultMeters">0</span> m<br>
+
+            <div class="details">
+                <small>
+                    ・必要な枚数（幅）: <span id="detailStrips">0</span> 枚分<br>
+                    ・1枚あたりの長さ: <span id="detailLength">0</span> cm<br>
+                    ・切りしろ(上下計10cm)を含んでいます
+                </small>
+            </div>
+
+            <div style="margin-top:20px;">
+                <a href="https://search.rakuten.co.jp/search/mall/壁紙+のり付き/" target="_blank"
+                    class="shop-link rakuten">楽天市場で探す</a>
+                <a href="https://www.amazon.co.jp/s?k=壁紙+のり付き&tag=YOUR_ID" target="_blank"
+                    class="shop-link amazon">Amazonで探す</a>
+            </div>
+        </div>
+
+        <p class="note">
+            ※切りしろ10cm、有効幅92cmで計算しています。<br>
+            ※計算結果は目安です。施工環境により変動します。
+        </p>
+    </div>
+
+    <script>
+        function calculate() {
+            const wHeight = parseFloat(document.getElementById('wallHeight').value);
+            const wWidth = parseFloat(document.getElementById('wallWidth').value);
+            const repeat = parseFloat(document.getElementById('patternRepeat').value) || 0;
+            const pWidth = parseFloat(document.getElementById('paperWidth').value);
+
+            if (!wHeight || !wWidth || !pWidth) return;
+
+            const margin = 10;
+            let cutLength = wHeight + margin;
+
+            if (repeat > 0) {
+                const repeatCount = Math.ceil(cutLength / repeat);
+                cutLength = repeatCount * repeat;
+            }
+
+            const strips = Math.ceil(wWidth / pWidth);
+            const totalCm = strips * cutLength;
+            const totalMeter = Math.ceil(totalCm / 100);
+
+            document.getElementById('resultMeters').innerText = totalMeter;
+            document.getElementById('detailStrips').innerText = strips;
+            document.getElementById('detailLength').innerText = cutLength;
+            document.getElementById('resultArea').style.display = 'block';
+        }
+
+        function clearAll() {
+            document.getElementById('wallHeight').value = '';
+            document.getElementById('wallWidth').value = '';
+            document.getElementById('patternRepeat').value = '0';
+            document.getElementById('paperWidth').value = '92';
+            document.getElementById('resultArea').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
